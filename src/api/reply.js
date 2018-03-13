@@ -36,6 +36,8 @@ const reply = event => {
   tweetNow(res)
 }
 
+const replytrade = event => {
+  
 
 
 
