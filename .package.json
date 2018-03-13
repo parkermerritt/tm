@@ -17,12 +17,12 @@
   ],
   "devDependencies": {
     "contributor": "0.1.25",
-    "prettier": "1.11.1"
+    "prettier": "1.7.4"
   },
   "dependencies": {
     "console.lol": "0.1.2",
-    "dotenv": "5.0.1",
-    "snyk": "1.70.0",
+    "dotenv": "4.0.0",
+    "snyk": "1.46.0",
     "twit": "2.2.9",
     "unique-random-array": "1.0.0"
   },
@@ -47,22 +47,22 @@
   "snyk": true,
   "contributors": [
     {
-      "name": "Martius",
+      "name": "Paul Abrams",
       "email": null,
-      "url": "https://github.com/martiuslim",
+      "url": "https://github.com/pabrams",
       "contributions": 1,
-      "additions": 13,
-      "deletions": 0,
+      "additions": 3,
+      "deletions": 3,
       "hireable": null
     },
     {
-      "name": "Snyk bot",
+      "name": "Nikki L.R.",
       "email": null,
-      "url": "https://github.com/snyk-bot",
-      "contributions": 1,
-      "additions": 19,
-      "deletions": 3,
-      "hireable": null
+      "url": "https://github.com/nikkilr88",
+      "contributions": 7,
+      "additions": 46,
+      "deletions": 33,
+      "hireable": true
     },
     {
       "name": "Joshua Vaage",
@@ -71,24 +71,6 @@
       "contributions": 1,
       "additions": 1,
       "deletions": 0,
-      "hireable": true
-    },
-    {
-      "name": "Sergio Ruiz",
-      "email": null,
-      "url": "https://github.com/serginator",
-      "contributions": 3,
-      "additions": 22,
-      "deletions": 4,
-      "hireable": null
-    },
-    {
-      "name": "Scott Spence",
-      "email": null,
-      "url": "https://github.com/spences10",
-      "contributions": 126,
-      "additions": 18460,
-      "deletions": 13315,
       "hireable": true
     },
     {
@@ -101,21 +83,21 @@
       "hireable": true
     },
     {
-      "name": "Millan Sanchez",
+      "name": "Sergio Ruiz",
       "email": null,
-      "url": "https://github.com/masdc",
-      "contributions": 2,
-      "additions": 5,
-      "deletions": 2,
+      "url": "https://github.com/serginator",
+      "contributions": 3,
+      "additions": 22,
+      "deletions": 4,
       "hireable": null
     },
     {
-      "name": "Paul Abrams",
+      "name": "Martius",
       "email": null,
-      "url": "https://github.com/pabrams",
+      "url": "https://github.com/martiuslim",
       "contributions": 1,
-      "additions": 3,
-      "deletions": 3,
+      "additions": 13,
+      "deletions": 0,
       "hireable": null
     },
     {
@@ -128,13 +110,31 @@
       "hireable": true
     },
     {
-      "name": "Nikki L.R.",
+      "name": "Millan Sanchez",
       "email": null,
-      "url": "https://github.com/nikkilr88",
-      "contributions": 7,
-      "additions": 46,
-      "deletions": 33,
+      "url": "https://github.com/masdc",
+      "contributions": 2,
+      "additions": 5,
+      "deletions": 2,
+      "hireable": null
+    },
+    {
+      "name": "Scott Spence",
+      "email": null,
+      "url": "https://github.com/spences10",
+      "contributions": 126,
+      "additions": 18460,
+      "deletions": 13315,
       "hireable": true
+    },
+    {
+      "name": "Snyk bot",
+      "email": null,
+      "url": "https://github.com/snyk-bot",
+      "contributions": 1,
+      "additions": 19,
+      "deletions": 3,
+      "hireable": null
     }
   ]
 }
