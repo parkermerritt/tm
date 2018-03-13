@@ -19,7 +19,8 @@
     "contributor": "0.1.25",
     "prettier": "1.7.4"
   },
-  "dependencies": {
+  "dependencies": {  
+    "async": "^2.0.0-rc.6",
     "console.lol": "0.1.2",
     "dotenv": "4.0.0",
     "snyk": "1.46.0",

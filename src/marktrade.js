@@ -4,6 +4,10 @@ const config = require('../config')
 const isReply = require('../helpers/isReply')
 const CoinMarketCap = require('coinmarketcap-api')
 
+
+var tweetQueue   = []; 
+var async        = require('async'); // async module
+
 const param = config.twitterConfig
 const randomReply = unique(param.randomReply.split('|'))
 
@@ -15,10 +19,29 @@ client.getTicker().then(console.log).catch(console.error)
 client.getGlobal().then(console.log).catch(console.error)
 
 
+// selects a coin from the corpus for the upcoming coin search
+function getName (callback) {
+  var coinNames   = coin_Names;
+  var shuffledNames = shuffle(photogNames.slice(0));
+  // console.log(shuffledNames);
+  var pickRandomPhotographerName = Math.floor(Math.random() * shuffledNames.length);
+  console.log('*** photographer name index: ' + pickRandomPhotographerName);
+  var searchName = photog_Names[pickRandomPhotographerName];
+  console.log('*** a photographer name has been randomly selected from the corpus...');
+  console.log('*** searching with the name: ' + searchName + '...');
+  callback(null, searchName);
+}
+
+
+
+
+
+
+
 // initiates the twitter stream
 function streamOn (callback) {
   // listening for @mentions for @askthephoto
-  var stream = T.stream('statuses/filter', { track: ['@askthephoto'] });
+  var stream = bot.stream('statuses/filter', { track: ['@MarkMyTrades'] });
   console.log('*** stream is now listening for tweets...');
   // run callback when you have a tweet.
   stream.on('tweet', callback);
