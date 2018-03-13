@@ -6,7 +6,11 @@ const CoinMarketCap = require('coinmarketcap-api')
 
 
 var tweetQueue   = []; 
+var shuffle      = require('knuth-shuffle').knuthShuffle; // knuth shuffles the corpus
 var async        = require('async'); // async module
+var path         = require('path'); // node module for handling and transforming file paths
+var coin_Names = require(path.join(__dirname, 'coinNames')); // corpus of coin names
+
 
 const param = config.twitterConfig
 const randomReply = unique(param.randomReply.split('|'))
@@ -22,11 +26,11 @@ client.getGlobal().then(console.log).catch(console.error)
 // selects a coin from the corpus for the upcoming coin search
 function getName (callback) {
   var coinNames   = coin_Names;
-  var shuffledNames = shuffle(photogNames.slice(0));
+  var shuffledNames = shuffle(coinNames.slice(0));
   // console.log(shuffledNames);
   var pickRandomPhotographerName = Math.floor(Math.random() * shuffledNames.length);
   console.log('*** photographer name index: ' + pickRandomPhotographerName);
-  var searchName = photog_Names[pickRandomPhotographerName];
+  var searchName = coin_Names[pickRandomPhotographerName];
   console.log('*** a photographer name has been randomly selected from the corpus...');
   console.log('*** searching with the name: ' + searchName + '...');
   callback(null, searchName);
