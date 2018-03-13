@@ -36,16 +36,7 @@ const reply = event => {
   tweetNow(res)
 }
 
-bot.post('statuses/update', {
-  status: '@HashcoinRicky I reply to you yes!',
-  in_reply_to_status_id: '860900406381211649'
-}, (err, data, response) => {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log(`${data.text} tweeted!`)
-  }
-})
+
 
 
 
