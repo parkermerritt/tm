@@ -6,6 +6,20 @@ module.exports = {
     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
     access_token: process.env.TWITTER_ACCESS_TOKEN,
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+  
+      // regEx for the trade entry
+    trigger: /(?:[^"']|^)(\bshow me a pic\b|\bshow me a picture\b|\bshow me a photo\b|\bshow me a photograph\b)(?!["'])/ig,
+
+    // regEx for a trade being noted
+    questionRegEx: /[^A-Za-z0-9',.;:"'&%@#*()!\s]/ig,
+  
+  
+  
+  
+  
+  
+  
+  
   },
   twitterConfig: {
     queryString: process.env.QUERY_STRING,
