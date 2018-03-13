@@ -15,7 +15,7 @@ function tweetNow(text) {
 
   bot.post('statuses/update', tweet, (err, data, response) => {
     if (err) {
-      console.lol('ERRORDERP Reply', err)
+      console.lol('ERROR Reply', err)
     }
     console.lol('SUCCESS: Replied: ', text)
   })

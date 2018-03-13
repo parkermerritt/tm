@@ -24,7 +24,8 @@
     "dotenv": "^5.0.1",
     "snyk": "^1.70.0",
     "twit": "^2.2.9",
-    "unique-random-array": "^1.0.0"
+    "unique-random-array": "^1.0.0",
+    "coinmarketcap-api": "*"
   },
   "now": {
     "alias": "twitter-bot-bootstrap"

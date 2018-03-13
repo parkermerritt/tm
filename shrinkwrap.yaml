@@ -1,4 +1,5 @@
 dependencies:
+  coinmarketcap-api: 1.0.1
   console.lol: 0.1.2
   dotenv: 5.0.1
   snyk: 1.70.0
@@ -315,6 +316,13 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
+  /coinmarketcap-api/1.0.1:
+    dependencies:
+      node-fetch: 1.7.3
+      qs: 6.5.1
+    dev: false
+    resolution:
+      integrity: sha512-c6Zbn4HwiG2SkrQ3jQEd6CrS+cLFhuHIo9zNyRZoaS997lIEq4y2I8NekJQFh6z0Zth7Ay/9UKxtGOQYPaky7w==
   /colors/0.6.2:
     dev: true
     engines:
@@ -518,6 +526,12 @@ packages:
       node: '>0.3.0'
     resolution:
       integrity: sha512-vkcJJZEb7JXDY883Nx1Lkmb6noM3j1SfSt8L9tVFhZPnPQiFq+Nkd5evc77+tRVS4ChTUSr34voThsglI/ja/A==
+  /encoding/0.1.12:
+    dependencies:
+      iconv-lite: 0.4.19
+    dev: false
+    resolution:
+      integrity: sha1-U4tm8+5izRq1HsMjgp0flIDHS+s=
   /end-of-stream/1.4.1:
     dependencies:
       once: 1.4.0
@@ -1246,6 +1260,13 @@ packages:
     dev: false
     resolution:
       integrity: sha1-GfYZWRUZ8JZ2mlupqG5u7sgjw88=
+  /node-fetch/1.7.3:
+    dependencies:
+      encoding: 0.1.12
+      is-stream: 1.1.0
+    dev: false
+    resolution:
+      integrity: sha512-NhZ4CsKx7cYm2vSrBAr2PvFOe6sWDf0UYLRqA6svUYg7+/TSfVAu49jYC4BvQ4Sms9SZgdqGBgroqfDhJdTyKQ==
   /node-status-codes/1.0.0:
     dev: false
     engines:
@@ -2365,6 +2386,7 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 4
 shrinkwrapVersion: 3
 specifiers:
+  coinmarketcap-api: '*'
   console.lol: 0.1.2
   contributor: 0.1.25
   dotenv: ^5.0.1
