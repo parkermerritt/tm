@@ -35,7 +35,10 @@ const reply = event => {
   const response = randomReply()
   
   var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error)
-  var price = client.getTicker("bitcoin").price_usd;
+  var price = client.getTicker({id: 'bitcoin'}).price_usd;
+  //console.log(price);
+  ticker = String(ticker);
+  price = String(price);
   console.log(price);
   
   var mapObj = {
