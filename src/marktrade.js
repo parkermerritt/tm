@@ -40,7 +40,8 @@ function getName (callback) {
 // bing image search based on photographer name selected in getName
 function searchImage (searchName, callback) {
   var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error)
-  var price = client.getTicker("bitcoin").price_usd
+  var price = client.getTicker("bitcoin").price_usd();
+  console.log(price);
   //Bing.images('Coin Ticker: ' +
   //  searchName, {adult: 'moderate', imageFilters: {size: 'large'}}, // set 'medium' if file size toarge errors
     function (error, response, body) {
@@ -55,7 +56,7 @@ function searchImage (searchName, callback) {
         //var array        = body.d.results; // search results based on 'photography by ' + corpus name
         //var botData      = {photographer, array};
         var array = client.getTicker({limit: 1, currency:'bitcoin'})
-        var botData      = {coin, array};
+        var botData      = {coin, price};
 
         console.log('*** search was a success! moving the required botData along...');
         // callback(null, botData);
