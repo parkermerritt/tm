@@ -12,8 +12,9 @@ const client = new CoinMarketCap()
 
 console.log(client)
 
-var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error); 
-var price = ticker['price_USD'];
+const ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error); 
+var price = ticker[0]['price_USD'][0];
+console.log(price);
 
 
 
