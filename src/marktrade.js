@@ -69,8 +69,109 @@ function searchImage (searchName, callback) {
 }
 
 
+// process search results for upcoming tweet
+function processBotdata (botData, callback) {
+  // this test accounts for searchImage, i.e. bing api sometimes returning an empty array;
+  if (!botData || !botData.array || !botData.array.length) {
+    if (callback(new Error('==========> Error: CoinMarket API returned No search results'))) {
+      async.waterfall([
+        getName,
+        async.retryable([opts = {times: 5, interval: 500}], searchImage),
+        async.retryable([opts = {times: 3, interval: 1000}], processBotdata),
+        async.retryable([opts = {times: 3, interval: 500}], getImage),
+        postTweet.bind(null, tweet)
+      ],
+      function (error, result) {
+        if (error) {
+          console.error(error);
+          return;
+        }
+        // console.log(result);
+      });
+    }
+  } else {
+    var coin = botData.coin;
+    var price        = botData.price;
+    var randomIndex  = Math.floor(Math.random() * array.length);
+    console.log('*** randomIndex: ' + randomIndex);
+    var mediaUrl  = array[randomIndex].MediaUrl;
+    console.log('*** mediaUrl: ' + mediaUrl);
+    var sourceUrl = array[randomIndex].SourceUrl;
+    console.log('*** sourceUrl: ' + sourceUrl);
+    var botData   = {photographer, mediaUrl, sourceUrl};
+    // writing the results to a file for later use
+    fs.readFile('results.json', function (err, data) {
+      var json = JSON.parse(data);
+      json.push(['search results for ' + photographer + ': ',
+                              'mediaUrl: ' + botData.mediaUrl,
+                              'sourceUrl: ' + botData.sourceUrl]);
+
+      fs.writeFile('results.json', JSON.stringify(json, null, '\t'));
+      console.log('*** botData appended to results.json file...');
+    });
+    console.log('*** botData has now been processed for upcoming tweet...');
+    // callback(null, botData);
+    setTimeout(function () {
+      callback(null, botData);
+      // console.log(botData);
+    }, 5000); // again a little breathing room before getImage
+  }
+}
 
 
+
+
+function postTweet (tweet, botData, callback) {
+  console.log('*** ok, time to tweet!');
+  if (tweetQueue.length > 0) {
+    //var newTweet = tweetQueue.shift();
+    //var imgBuffer    = botData.imgBuffer;
+    //var b64content   = botData.b64content;
+    var coin = botData.coin;
+    var price = botData.price;
+    //var mediaUrl     = botData.mediaUrl;
+    //var sourceUrl    = botData.sourceUrl;
+    var name         = tweet.user.screen_name;
+    var tweetId      = tweet.id_str;
+
+    // array of question prompts that accompany the photo (removed)
+      var questions          = config.questions;
+      // selects one of the questions for the reply
+      var pickRandomQuestion = Math.floor(Math.random() * questions.length);
+      var question           = questions[pickRandomQuestion];
+      var reply              = '@' + name + ' ' + question + ' ' + 'Coin Ticker: ' + coin + ' Coin Price: ' + price;
+      var params             = {
+                                status: reply,
+                                in_reply_to_status_id: newTweet.tweetId,
+                                //media_ids: [mediaIdStr]
+                               };
+    
+    
+  
+    //T.post('media/upload', { media_data: b64content }, function (err, data, response) {
+      bot.post('statuses/update', params, function (err, data, response) {
+
+      //var mediaIdStr         = data.media_id_string;
+     
+        // array of question prompts that accompany the photo
+  
+        //Removed
+        
+        
+      if (err) {
+        callback(err, null, null);
+        console.log('*** Error');
+        console.log(err);
+        return;
+      } else {
+        bot.post('statuses/update', params, function (err, data, response) {
+        callback(null, data);
+          console.log('*** a tweet has been posted!');
+        });
+      }
+    });
+  }
+}
 
 
 
@@ -108,7 +209,7 @@ streamOn(function (tweet) {
         getName,
         async.retryable([opts = {times: 5, interval: 500}], searchImage),
         async.retryable([opts = {times: 3, interval: 1000}], processBotdata),
-        async.retryable([opts = {times: 3, interval: 500}], getImage),
+        //async.retryable([opts = {times: 3, interval: 500}], getImage),
         postTweet.bind(null, tweet)
       ],
       function (error, result) {
