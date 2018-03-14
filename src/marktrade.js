@@ -41,8 +41,8 @@ function getName (callback) {
 function searchImage (searchName, callback) {
   var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error)
   
-  Bing.images('Coin Ticker: ' +
-    searchName, {adult: 'moderate', imageFilters: {size: 'large'}}, // set 'medium' if file size toarge errors
+  //Bing.images('Coin Ticker: ' +
+  //  searchName, {adult: 'moderate', imageFilters: {size: 'large'}}, // set 'medium' if file size toarge errors
     function (error, response, body) {
       if (error) {
         callback(error, null, null);
@@ -51,9 +51,12 @@ function searchImage (searchName, callback) {
         return;
       } else {
         console.log('*** getting randomly selected image from bing results array...');
-        var photographer = searchName;
-        var array        = body.d.results; // search results based on 'photography by ' + corpus name
-        var botData      = {photographer, array};
+        var coin = searchName;
+        //var array        = body.d.results; // search results based on 'photography by ' + corpus name
+        //var botData      = {photographer, array};
+        var array = client.getTicker({limit: 1, currency:'bitcoin'})
+        var botData      = {coin, array};
+
         console.log('*** search was a success! moving the required botData along...');
         // callback(null, botData);
         setTimeout(function () {
