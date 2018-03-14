@@ -2,6 +2,7 @@ const Twit = require('twit')
 const unique = require('unique-random-array')
 const config = require('../config')
 const CoinMarketCap = require('coinmarketcap-api')
+var async        = require('async'); // async module
 
 
 const param = config.twitterConfig

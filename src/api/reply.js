@@ -2,6 +2,8 @@ const Twit = require('twit')
 const unique = require('unique-random-array')
 const config = require('../config')
 const CoinMarketCap = require('coinmarketcap-api')
+var async        = require('async') // async module
+
 
 
 const param = config.twitterConfig
@@ -11,18 +13,13 @@ const bot = new Twit(config.twitterKeys)
 const client = new CoinMarketCap()
 
 console.log(client)
+  
+let ticker; 
 
-async function getPriceInfo() {
-  let ticker; 
-  try {
+const checkPrice = async () => {
   ticker = await client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error); 
-  } catch (e) {
-    ticker = await client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error); 
-  }
-  return ticker[price_usd]
+  return ticker;
 }
-    //}
-
 
 var price = ticker['price_USD'];
 console.log(price);
