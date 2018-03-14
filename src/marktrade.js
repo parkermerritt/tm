@@ -124,7 +124,7 @@ function processBotdata (botData, callback) {
 function postTweet (tweet, botData, callback) {
   console.log('*** ok, time to tweet!');
   if (tweetQueue.length > 0) {
-    //var newTweet = tweetQueue.shift();
+    var newTweet = tweetQueue.shift();
     //var imgBuffer    = botData.imgBuffer;
     //var b64content   = botData.b64content;
     var coin = botData.coin;
@@ -177,7 +177,7 @@ function postTweet (tweet, botData, callback) {
 
 // initiates the twitter stream
 function streamOn (callback) {
-  // listening for @mentions for @askthephoto
+  // listening for @mentions for @MarkMyTrades
   var stream = bot.stream('statuses/filter', { track: ['@MarkMyTrades'] });
   console.log('*** stream is now listening for tweets...');
   // run callback when you have a tweet.
