@@ -55,7 +55,7 @@ function searchImage (searchName, callback) {
         var coin = searchName;
         //var array        = body.d.results; // search results based on 'photography by ' + corpus name
         //var botData      = {photographer, array};
-        var array = client.getTicker({limit: 1, currency:'bitcoin'})
+        var price = client.getTicker({limit: 1, currency:'bitcoin'}).price_usd;
         var botData      = {coin, price};
 
         console.log('*** search was a success! moving the required botData along...');

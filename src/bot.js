@@ -13,6 +13,7 @@ const bot = new Twit(config.twitterKeys)
 const retweet = require('./api/retweet')
 const reply = require('./api/reply')
 
+
 console.rofl('Bot starting...')
 
 // retweet on keywords
@@ -22,6 +23,9 @@ console.rofl('Bot starting...')
 // reply to new follower
 const userStream = bot.stream('user')
 userStream.on('follow', reply)
+
+//reply to a trade request
+userStream.on('',reply)
 
 // This will allow the bot to run on now.sh
 const server = createServer((req, res) => {
