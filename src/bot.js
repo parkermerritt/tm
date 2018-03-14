@@ -28,7 +28,7 @@ userStream.on('follow', reply)
 
 //reply to a trade request
 var tradeStream = bot.stream('statuses/filter', { track: ['@MarkMyTrades'] });
-tradeStream.on('',marktrade2)
+//tradeStream.on('',marktrade2)
 
 // This will allow the bot to run on now.sh
 const server = createServer((req, res) => {

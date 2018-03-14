@@ -30,9 +30,11 @@ const reply = event => {
     return
   }
   const response = randomReply()
-
+  
+  
+  
   const res = response.replace('${screenName}', screenName)
-
+  
   tweetNow(res)
 }
 

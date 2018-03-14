@@ -14,7 +14,7 @@ const client = new CoinMarketCap()
 // CoinMarketCap info search based on coin name selected in getName
 function searchImage (searchName, callback) {
   var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error)
-  var price = client.getTicker("bitcoin").price_usd();
+  var price = client.getTicker("bitcoin").price_usd;
   console.log(price);
   
         var coin = searchName;
@@ -54,6 +54,11 @@ const reply = event => {
     return
   }
   const response = randomReply()
+  
+  var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error)
+  var price = client.getTicker("bitcoin").price_usd;
+  console.log(price);
+
 
   const res = response.replace('${screenName}', screenName)
 
