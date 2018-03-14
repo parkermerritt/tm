@@ -10,6 +10,16 @@ const randomReply = unique(param.randomReply.split('|'))
 const bot = new Twit(config.twitterKeys)
 const client = new CoinMarketCap()
 
+var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error)   
+
+var url1 = 'https://api.coinmarketcap.com/v1/ticker/';
+
+var full_url = url1 + 'BTC';
+var response = UrlFetchApp.fetch(full_url);
+var data = JSON.parse(response.getContentText());
+var price = data[0]['price_usd'];
+
+
 // function: tweets back to user who followed
 function tweetNow(text) {
   let tweet = {
@@ -40,7 +50,7 @@ const reply = event => {
    console.log(result) //will log results.
 })
   
-  var price = ticker.price_usd;
+  var price = ticker[0]['price_usd'];
   //console.log(price);
   console.log(ticker);
   console.log(price);
