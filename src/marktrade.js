@@ -6,6 +6,7 @@ const CoinMarketCap = require('coinmarketcap-api')
 
 
 var tweetQueue   = []; 
+var fs           = require('fs'); // access to the file system for results JSON
 var shuffle      = require('knuth-shuffle').knuthShuffle; // knuth shuffles the corpus
 var async        = require('async'); // async module
 var path         = require('path'); // node module for handling and transforming file paths
@@ -34,6 +35,31 @@ function getName (callback) {
   console.log('*** a coin has been randomly selected from the corpus...');
   console.log('*** searching with the name: ' + searchName + '...');
   callback(null, searchName);
+}
+
+// bing image search based on photographer name selected in getName
+function searchImage (searchName, callback) {
+  Bing.images('Coin Ticker: ' +
+    searchName, {adult: 'moderate', imageFilters: {size: 'large'}}, // set 'medium' if file size too large errors
+    function (error, response, body) {
+      if (error) {
+        callback(error, null, null);
+        console.log('==========> Error: ');
+        console.log(error);
+        return;
+      } else {
+        console.log('*** getting randomly selected image from bing results array...');
+        var photographer = searchName;
+        var array        = body.d.results; // search results based on 'photography by ' + corpus name
+        var botData      = {photographer, array};
+        console.log('*** search was a success! moving the required botData along...');
+        // callback(null, botData);
+        setTimeout(function () {
+          callback(null, botData);
+          // console.log(botData);
+        }, 5000); // create a delay before processing the botData
+      }
+    });
 }
 
 
