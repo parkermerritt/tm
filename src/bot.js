@@ -12,6 +12,8 @@ const bot = new Twit(config.twitterKeys)
 
 const retweet = require('./api/retweet')
 const reply = require('./api/reply')
+const marktrade2 = require('./api/marktrade2')
+
 
 
 console.rofl('Bot starting...')
@@ -25,7 +27,8 @@ const userStream = bot.stream('user')
 userStream.on('follow', reply)
 
 //reply to a trade request
-userStream.on('',reply)
+var tradeStream = bot.stream('statuses/filter', { track: ['@MarkMyTrades'] });
+tradeStream.on('',marktrade2)
 
 // This will allow the bot to run on now.sh
 const server = createServer((req, res) => {
