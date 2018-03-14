@@ -40,7 +40,7 @@ function getName (callback) {
 // bing image search based on photographer name selected in getName
 function searchImage (searchName, callback) {
   var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error)
-  
+  var price = client.getTicker("bitcoin").price_usd
   //Bing.images('Coin Ticker: ' +
   //  searchName, {adult: 'moderate', imageFilters: {size: 'large'}}, // set 'medium' if file size toarge errors
     function (error, response, body) {
