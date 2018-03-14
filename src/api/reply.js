@@ -13,11 +13,11 @@ const client = new CoinMarketCap()
 console.log(client)
 
 var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error); 
-var IMEICheckResponse  = ticker.getTicker("GET","price_USD");
-console.log(IMEICheckResponse);
 
+var price = ticker.price_USD;
 
-//console.log(ticker)
+console.log(ticker.price_USD)
+
 
 
 client.onreadystatechange = function() {
@@ -27,12 +27,12 @@ client.onreadystatechange = function() {
     }
 };
 
-var price = ticker.getTicker("GET", "price_USD", true);
-console.log(price)
+//var price = ticker.getTicker("GET", "price_USD", true);
+//console.log(price)
 
-price.then(function(result) {
-   console.log(result) //will log results.
-})
+//price.then(function(result) {
+//   console.log(result) //will log results.
+//})
 
 //client.send();
 
@@ -68,13 +68,13 @@ const reply = event => {
   var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error)   
   
   ticker.then(function(result) {
-   console.log(result) //will log results.
+   //console.log(result) //will log results.
 })
   
-  var price = ticker[0]['price_usd'];
+  //var price = ticker[0]['price_usd'];
   //console.log(price);
-  console.log(ticker);
-  console.log(price);
+  //console.log(ticker);
+  //console.log(price);
   
   var mapObj = {
      coin:ticker,
