@@ -57,6 +57,7 @@ const reply = event => {
   
   var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error)
   var price = client.getTicker("bitcoin").price_usd;
+  
   console.log(price);
   
   var mapObj = {
