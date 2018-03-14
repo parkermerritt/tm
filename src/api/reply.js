@@ -13,7 +13,11 @@ const client = new CoinMarketCap()
 console.log(client)
 
 var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error); 
-console.log(ticker)
+var IMEICheckResponse  = ticker.getTicker("GET","price_USD");
+console.log(IMEICheckResponse);
+
+
+//console.log(ticker)
 
 
 client.onreadystatechange = function() {
@@ -23,8 +27,14 @@ client.onreadystatechange = function() {
     }
 };
 
-client.open("GET", "price_usd", true);
-client.send();
+var price = ticker.getTicker("GET", "price_USD", true);
+console.log(price)
+
+price.then(function(result) {
+   console.log(result) //will log results.
+})
+
+//client.send();
 
 //var data = JSON.parse(ticker);
 //console.log(data)
