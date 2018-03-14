@@ -1,11 +1,14 @@
 const Twit = require('twit')
 const unique = require('unique-random-array')
 const config = require('../config')
+const CoinMarketCap = require('coinmarketcap-api')
+
 
 const param = config.twitterConfig
 const randomReply = unique(param.randomReply.split('|'))
 
 const bot = new Twit(config.twitterKeys)
+const client = new CoinMarketCap()
 
 // function: tweets back to user who followed
 function tweetNow(text) {
@@ -31,9 +34,22 @@ const reply = event => {
   }
   const response = randomReply()
   
+  var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error)
+  var price = client.getTicker("bitcoin").price_usd;
+  console.log(price);
+  
+  var mapObj = {
+     coin:ticker,
+     price:price,
+    '${screenName}':screenName
+  };
+  
+  var res = response.replace(/coin|price|${screenName}'/gi, function(matched){
+  return mapObj[matched];
+  });
   
   
-  const res = response.replace('${screenName}', screenName)
+  //const res = response.replace('${screenName}', screenName)
   
   tweetNow(res)
 }
