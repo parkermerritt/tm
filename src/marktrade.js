@@ -31,7 +31,7 @@ function getName (callback) {
   var pickRandomPhotographerName = Math.floor(Math.random() * shuffledNames.length);
   console.log('*** photographer name index: ' + pickRandomPhotographerName);
   var searchName = coin_Names[pickRandomPhotographerName];
-  console.log('*** a photographer name has been randomly selected from the corpus...');
+  console.log('*** a coin has been randomly selected from the corpus...');
   console.log('*** searching with the name: ' + searchName + '...');
   callback(null, searchName);
 }

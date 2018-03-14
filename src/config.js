@@ -8,10 +8,10 @@ module.exports = {
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
   
       // regEx for the trade entry
-    trigger: /(?:[^"']|^)(\bshow me a pic\b|\bshow me a picture\b|\bshow me a photo\b|\bshow me a photograph\b)(?!["'])/ig,
+    //trigger: /(?:[^"']|^)(\bTradeMark\b|\bMark this trade\b|\bBUY\b|\bENTRY\b)(?!["'])/ig,
 
     // regEx for a trade being noted
-    questionRegEx: /[^A-Za-z0-9',.;:"'&%@#*()!\s]/ig,
+    //questionRegEx: /[^A-Za-z0-9',.;:"'&%@#*()!\s]/ig,
   
   
   
