@@ -41,10 +41,10 @@ const reply = event => {
   var mapObj = {
      coin:ticker,
      price:price,
-    '${screenName}':screenName
+    '@${screenName}':screenName
   };
   
-  var res = response.replace(/coin|price|${screenName}'/gi, function(matched){
+  var res = response.replace(/coin|price|@${screenName}'/gi, function(matched){
   return mapObj[matched];
   });
   
