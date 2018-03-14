@@ -10,9 +10,24 @@ const randomReply = unique(param.randomReply.split('|'))
 const bot = new Twit(config.twitterKeys)
 const client = new CoinMarketCap()
 
-var ticker = JSON.parse(client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error)); 
+console.log(client)
+
+var ticker = client.getTicker({limit: 1, currency: 'bitcoin'}).then(console.log).catch(console.error); 
+console.log(ticker)
+
+
+client.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        document.getElementById("bitcoin").innerHTML = myArr[0];
+    }
+};
+
+client.open("GET", "price_usd", true);
+client.send();
 
 //var data = JSON.parse(ticker);
+//console.log(data)
 //var price = ticker[0]['price_usd'];
 
 
